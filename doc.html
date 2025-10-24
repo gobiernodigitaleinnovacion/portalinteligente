@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Inteligente - Brochure 2025</title>
+    <style>
+        @page {
+            margin: 0;
+            size: A4;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background: white;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: white;
+            page-break-after: always;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .page:last-child {
+            page-break-after: avoid;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            min-height: 200px;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .header h1 {
+            font-size: 3.2em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header .subtitle {
+            font-size: 1.4em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 20px;
+        }
+        
+        .badge-container {
+            position: relative;
+            z-index: 1;
+            margin-top: 20px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin: 5px 8px;
+            backdrop-filter: blur(10px);
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        
+        .content {
+            padding: 20px 30px;
+            flex: 1;
+        }
+        
+        .section-title {
+            color: #2a5298;
+            font-size: 2em;
+            margin-bottom: 15px;
+            text-align: center;
+            position: relative;
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        
+        .quote-box {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border-left: 5px solid #2a5298;
+            text-align: center;
+            font-size: 1em;
+            font-style: italic;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .tech-badge {
+            background: #2a5298;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            text-align: center;
+            font-size: 0.85em;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .stat-box {
+            background: #2a5298;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .feature-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #2a5298;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .feature-title {
+            color: #2a5298;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-text {
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        
+        .module-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 10px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .module-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .module-text {
+            font-size: 0.9em;
+            line-height: 1.4;
+            opacity: 0.95;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 15px 0;
+        }
+        
+        .benefit-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+        }
+        
+        .benefit-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .benefit-title {
+            color: #2a5298;
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .benefit-text {
+            font-size: 0.8em;
+            line-height: 1.3;
+        }
+        
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 15px 0;
+        }
+        
+        .case-box {
+            background: white;
+            padding: 18px;
+            border-radius: 10px;
+            border: 2px solid #28a745;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .case-title {
+            color: #2a5298;
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .case-text {
+            font-size: 0.8em;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+        
+        .case-link {
+            color: #28a745;
+            font-weight: 600;
+            font-size: 0.8em;
+            text-decoration: none;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(120deg, #ffeaa7 0%, #fab1a0 100%);
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border-left: 5px solid #e17055;
+        }
+        
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 15px 0;
+        }
+        
+        .process-step {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+        }
+        
+        .step-number {
+            background: #2a5298;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 0 auto 10px;
+        }
+        
+        .step-title {
+            color: #2a5298;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .step-text {
+            font-size: 0.8em;
+            line-height: 1.3;
+        }
+        
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 20px 30px;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .company-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .company-section h3 {
+            margin-bottom: 10px;
+            color: #74b9ff;
+        }
+        
+        .company-section p {
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        
+        .new-badge {
+            background: #e74c3c;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7em;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        
+        .new-section {
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            color: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 15px;
+        }
+        
+        .new-features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .new-feature-box {
+            background: rgba(255,255,255,0.95);
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .new-feature-title {
+            color: #2a5298;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            .page {
+                page-break-after: always;
+                margin: 0;
+                background: white !important;
+            }
+            
+            .header {
+                background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+            
+            .badge {
+                background: rgba(255,255,255,0.2) !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+            
+            .stat-box {
+                background: #2a5298 !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+            
+            .module-box {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+            
+            .new-section {
+                background: linear-gradient(135deg, #00b894 0%, #00cec9 100%) !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+            
+            .tech-badge {
+                background: #2a5298 !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+            
+            .footer {
+                background: #1a1a1a !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+            
+            .quote-box,
+            .highlight-box {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PÁGINA 1: PORTADA Y INTRODUCCIÓN -->
+    <div class="page">
+        <div class="header">
+            <h1>Portal Inteligente</h1>
+            <p class="subtitle">Solución Digital Integral para la Transformación Gubernamental</p>
+            <div class="badge-container">
+                <div class="badge">✨ Tecnología de Vanguardia</div>
+                <div class="badge">🚀 Implementación Inmediata</div>
+                <div class="badge">📊 400+ Indicadores Oficiales</div>
+                <div class="badge">🆕 Análisis Territorial Avanzado</div>
+                <div class="badge">📈 Proyecciones CONAPO 2020-2040</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2 class="section-title">Revolucione su Administración Pública</h2>
+            
+            <div class="quote-box">
+                <strong>"La Información es Poder"</strong> - Transforme su municipio o estado con el Portal Inteligente, 
+                una plataforma digital integral que combina análisis de datos avanzados, inteligencia artificial y 
+                herramientas de gestión territorial para optimizar la toma de decisiones gubernamentales.
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-badge">Inteligencia Artificial</div>
+                <div class="tech-badge">Análisis de Big Data</div>
+                <div class="tech-badge">Dashboards Interactivos</div>
+                <div class="tech-badge">Chat IA con Internet</div>
+                <div class="tech-badge">Reportes PDF Automáticos</div>
+                <div class="tech-badge">+400 Indicadores INEGI/CONEVAL</div>
+                <div class="tech-badge">Análisis por AGEBs</div>
+                <div class="tech-badge">Censo Económico 2019</div>
+                <div class="tech-badge">DENUE 2025</div>
+                <div class="tech-badge">Proyecciones CONAPO 2020-2040</div>
+            </div>
+
+            <h2 class="section-title">Capacidades del Sistema</h2>
+            <div class="stats-container">
+                <div class="stat-box">
+                    <span class="stat-number">400+</span>
+                    <span class="stat-label">Indicadores Territoriales</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Disponibilidad</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">Módulos Especializados</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">2040</span>
+                    <span class="stat-label">Proyecciones Hasta</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 2: NUEVAS CAPACIDADES Y CARACTERÍSTICAS -->
+    <div class="page">
+        <div class="content">
+            <div class="new-section">
+                <h2 style="color: white; text-align: center; margin-bottom: 20px;">
+                    Nuevas Capacidades de Análisis Territorial <span class="new-badge">NUEVO 2025</span>
+                </h2>
+                <div class="new-features-grid">
+                    <div class="new-feature-box">
+                        <div class="new-feature-title">🏙️ Análisis Urbano Integral por AGEBs</div>
+                        <p style="font-size: 0.9em;">Sistema que genera análisis demográficos completos a nivel de Áreas Geoestadísticas Básicas urbanas, basado en el Censo 2020. Perfecto para planificación urbana, conectividad y modernización digital.</p>
+                    </div>
+                    <div class="new-feature-box">
+                        <div class="new-feature-title">🌍 Análisis Sociodemográfico por Localidades</div>
+                        <p style="font-size: 0.9em;">Análisis completo de localidades integrando perfil demográfico, educación, economía, mercado laboral, calidad habitacional y diversidad cultural.</p>
+                    </div>
+                    <div class="new-feature-box">
+                        <div class="new-feature-title">🏢 Directorio Empresarial DENUE 2025</div>
+                        <p style="font-size: 0.9em;">Acceso completo al Directorio actualizado con análisis sectorial, por actividad, tamaño de empresa y búsqueda empresarial avanzada.</p>
+                    </div>
+                    <div class="new-feature-box">
+                        <div class="new-feature-title">📊 Censo Económico Integral</div>
+                        <p style="font-size: 0.9em;">Análisis económico basado en Censo Económico 2019 incluyendo estructura empresarial, productividad y competitividad municipal.</p>
+                    </div>
+                    <div class="new-feature-box">
+                        <div class="new-feature-title">📈 Proyecciones Demográficas CONAPO 2020-2040</div>
+                        <p style="font-size: 0.9em;">Reporte ejecutivo que proporciona un diagnóstico integral de la situación demográfica municipal basado en datos oficiales del CONAPO (2020-2040). Incluye 12 secciones técnicas: caracterización poblacional, proyecciones demográficas, análisis de envejecimiento, indicadores de dependencia, evaluación de riesgos, oportunidades estratégicas e impacto en servicios públicos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Características del Portal Inteligente</h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-title">🎯 Gestión Integral de Datos</div>
+                    <div class="feature-text">Centraliza más de 400 indicadores de INEGI, CONEVAL, CONAPO y Hacienda, incluyendo análisis por AGEBs, localidades, censo económico, directorio empresarial y proyecciones demográficas 2020-2040.</div>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="feature-title">🤖 GobiAsistente IA</div>
+                    <div class="feature-text">Asistente virtual inteligente con búsqueda en internet, consulta de documentos y análisis personalizado 24/7.</div>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="feature-title">📊 Dashboards Dinámicos</div>
+                    <div class="feature-text">Visualizaciones interactivas para monitorear pobreza, finanzas, FAIS, demografía, proyecciones CONAPO y análisis territorial en tiempo real.</div>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="feature-title">📄 Reportes PDF Automatizados</div>
+                    <div class="feature-text">Generación automática de reportes ejecutivos demográficos, análisis territoriales y proyecciones CONAPO listos para presentaciones.</div>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="feature-title">🔗 Eliminación de Silos</div>
+                    <div class="feature-text">Integra información dispersa creando una fuente única de verdad territorial para coordinación interinstitucional con proyecciones demográficas.</div>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="feature-title">🔍 Búsqueda Inteligente</div>
+                    <div class="feature-text">Sistema avanzado para encontrar información territorial, proyecciones demográficas en documentos y bases de datos instantáneamente.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 3: MÓDULOS ESPECIALIZADOS -->
+    <div class="page">
+        <div class="content">
+            <h2 class="section-title">Módulos Especializados</h2>
+            
+            <div class="module-box">
+                <div class="module-title">📈 Módulo de Pobreza y Rezago Social</div>
+                <div class="module-text">Analiza indicadores de pobreza multidimensional, carencias sociales y rezago educativo. Identifica zonas prioritarias para programas sociales utilizando metodologías oficiales de CONEVAL.</div>
+            </div>
+            
+            <div class="module-box">
+                <div class="module-title">💰 Módulo de Finanzas Públicas</div>
+                <div class="module-text">Monitoreo en tiempo real de ingresos, egresos, deuda pública e indicadores financieros. Genera proyecciones presupuestales y análisis de sostenibilidad fiscal.</div>
+            </div>
+            
+            <div class="module-box">
+                <div class="module-title">🏗️ Módulo FAIS (Fondo de Infraestructura Social)</div>
+                <div class="module-text">Gestión integral del Fondo con seguimiento de proyectos, análisis de impacto social y cumplimiento normativo. Optimiza recursos para maximizar beneficio social.</div>
+            </div>
+            
+            <div class="module-box" style="border: 3px solid #ffeaa7;">
+                <div class="module-title">👥 Módulo Demográfico Avanzado <span class="new-badge">AMPLIADO</span></div>
+                <div class="module-text">Análisis poblacional con proyecciones demográficas, migración y crecimiento urbano. <strong>Ahora incluye análisis por AGEBs urbanas y sociodemográfico por localidades</strong> para planificación territorial detallada.</div>
+            </div>
+
+            <div class="module-box" style="border: 3px solid #ffeaa7;">
+                <div class="module-title">🏢 Módulo Económico Empresarial <span class="new-badge">NUEVO</span></div>
+                <div class="module-text">Análisis integral del ecosistema empresarial basado en Censo Económico 2019 y DENUE 2025. Incluye análisis sectorial, estructura productiva y oportunidades de desarrollo territorial.</div>
+            </div>
+
+            <div class="module-box" style="border: 3px solid #ffeaa7;">
+                <div class="module-title">🔮 Módulo Proyecciones Demográficas CONAPO <span class="new-badge">NUEVO</span></div>
+                <div class="module-text">Sistema integral de análisis demográfico prospectivo basado en las proyecciones oficiales CONAPO 2020-2040. Genera reportes ejecutivos con 12 secciones técnicas que incluyen caracterización poblacional, análisis de envejecimiento, indicadores de dependencia, evaluación de riesgos demográficos, oportunidades estratégicas e impacto en servicios públicos. Herramienta fundamental para planificación estratégica municipal a largo plazo.</div>
+            </div>
+
+            <h2 class="section-title">Beneficios para Servidores Públicos y Ciudadanía</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <span class="benefit-icon">⚡</span>
+                    <div class="benefit-title">Decisiones Basadas en Datos</div>
+                    <div class="benefit-text">Evidencia territorial sólida y proyecciones demográficas oficiales para cada política pública y proyecto de desarrollo.</div>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">🎯</span>
+                    <div class="benefit-title">Eficiencia Operativa</div>
+                    <div class="benefit-text">Reduce búsqueda territorial de horas a segundos, liberando recursos estratégicos y análisis prospectivo.</div>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">🔄</span>
+                    <div class="benefit-title">Coordinación Interinstitucional</div>
+                    <div class="benefit-text">Fuente única de información territorial y proyecciones demográficas para colaboración entre dependencias.</div>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">📱</span>
+                    <div class="benefit-title">Acceso 24/7</div>
+                    <div class="benefit-text">Disponibilidad total para consultas territoriales urgentes y proyecciones demográficas desde cualquier dispositivo.</div>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">🏆</span>
+                    <div class="benefit-title">Transparencia y Rendición</div>
+                    <div class="benefit-text">Informes territoriales y reportes demográficos para organismos fiscalizadores y ciudadanía.</div>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">💡</span>
+                    <div class="benefit-title">Innovación Gubernamental</div>
+                    <div class="benefit-text">Liderazgo en gobierno digital, análisis territorial y proyecciones demográficas oficiales.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 4: CASOS DE ÉXITO Y PROCESO -->
+    <div class="page">
+        <div class="content">
+            <h2 class="section-title">Portales Implementados - Casos de Éxito Reales</h2>
+            
+            <div class="cases-grid">
+                <div class="case-box">
+                    <div class="case-title">🌐 Portal Ecatepec Inteligente <span class="new-badge">ACTUALIZADO</span></div>
+                    <div class="case-text">Municipio más grande de México con análisis por AGEBs, localidades, censo económico, DENUE y proyecciones CONAPO. Más de 400 indicadores territoriales.</div>
+                    <a href="https://sites.google.com/view/portal-ecatepec-inteligente" class="case-link">🔗 Ver Portal en Vivo</a>
+                </div>
+                
+                <div class="case-box">
+                    <div class="case-title">🌐 Portal Cuautitlán Izcalli <span class="new-badge">ACTUALIZADO</span></div>
+                    <div class="case-text">Portal funcional con nuevos análisis por AGEBs, localidades, censo económico, directorio empresarial y proyecciones demográficas CONAPO.</div>
+                    <a href="https://sites.google.com/view/portal-cizcalli-inteligente" class="case-link">🔗 Ver Portal en Vivo</a>
+                </div>
+                
+                <div class="case-box">
+                    <div class="case-title">🌐 Portal Nezahualcóyotl <span class="new-badge">ACTUALIZADO</span></div>
+                    <div class="case-text">Portal operativo con análisis territorial avanzado incluyendo AGEBs, localidades, ecosistema empresarial y proyecciones demográficas oficiales.</div>
+                    <a href="https://sites.google.com/view/nezahualcoyolt-inteligente" class="case-link">🔗 Ver Portal en Vivo</a>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h3 style="color: #2a5298; margin-bottom: 15px;">✅ Portales con Análisis Territorial Completo y Proyecciones CONAPO</h3>
+                <p style="margin-bottom: 10px;"><strong>Estos no son mockups:</strong> Son portales <strong>reales y operativos</strong> con nuevas capacidades territoriales y demográficas.</p>
+                <ul style="margin-left: 20px; font-size: 0.9em;">
+                    <li><strong>Análisis por AGEBs:</strong> Urbano integral a nivel de Áreas Geoestadísticas</li>
+                    <li><strong>Análisis por Localidades:</strong> Estudios sociodemográficos completos</li>
+                    <li><strong>Censo Económico:</strong> Estructura empresarial y productividad</li>
+                    <li><strong>Directorio DENUE:</strong> Base empresarial actualizada 2025</li>
+                    <li><strong>Proyecciones CONAPO:</strong> Análisis demográfico prospectivo 2020-2040</li>
+                </ul>
+            </div>
+
+            <h2 class="section-title">Proceso de Implementación</h2>
+            
+            <div class="highlight-box">
+                <p style="text-align: center; font-weight: 600; margin-bottom: 15px;">🚀 Productos desarrollados, probados y funcionales listos para implementación inmediata con análisis territorial y proyecciones CONAPO.</p>
+            </div>
+            
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Configuración</div>
+                    <div class="step-text">Adaptación del portal e imagen institucional. Configuración territorial específica y proyecciones CONAPO (1-2 semanas).</div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Migración</div>
+                    <div class="step-text">Integración de bases existentes y configuración de fuentes territoriales oficiales y proyecciones demográficas (1 semana).</div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Capacitación</div>
+                    <div class="step-text">Entrenamiento en uso del sistema, herramientas de análisis territorial y reportes demográficos CONAPO (1 semana).</div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Activación</div>
+                    <div class="step-text">Puesta en producción completa con todas las capacidades territoriales y demográficas (1 día).</div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; background: #2a5298; color: white; padding: 15px; border-radius: 10px; margin: 20px 0;">
+                <h3 style="margin-bottom: 10px;">⏱️ Tiempo Total: 3-4 semanas desde contratación hasta operación completa</h3>
+                <p>Con análisis territorial avanzado y proyecciones demográficas CONAPO incluido</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 5: CONTACTO Y LLAMADA A LA ACCIÓN -->
+    <div class="page">
+        <div class="content">
+            <h2 class="section-title">Transforme su Administración con Análisis Territorial y Proyecciones CONAPO</h2>
+            
+            <div class="quote-box">
+                <h3 style="color: #2a5298; margin-bottom: 15px;">🎯 Únase a la Revolución del Gobierno Inteligente Territorial</h3>
+                <p style="font-size: 1.1em; margin-bottom: 15px;">Contrate el Portal Inteligente y posicione su administración a la vanguardia del análisis territorial, proyecciones demográficas oficiales y la planificación estratégica prospectiva.</p>
+                <p style="font-weight: 600;">🔗 Explore nuestros 3 portales reales con análisis territorial completo y proyecciones CONAPO antes de decidir.</p>
+            </div>
+
+            <h2 class="section-title">🎥 Demostración en Video</h2>
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; text-align: center; margin: 20px 0;">
+                <p style="margin-bottom: 15px; font-size: 1.1em;">Vea el Portal Inteligente en acción con dashboards reales, análisis territorial, proyecciones demográficas y funcionalidades de GobiAsistente.</p>
+                <p style="color: #2a5298; font-weight: 600;">🔗 YouTube: youtube.com/watch?v=gzYcbgQ_Ny0</p>
+                <p style="margin-top: 10px; font-size: 0.9em;">Explore capacidades reales de análisis territorial, datos demográficos y proyecciones CONAPO</p>
+            </div>
+
+            <h2 class="section-title">💼 Beneficios de Implementación</h2>
+            <div style="background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%); padding: 20px; border-radius: 12px; margin: 20px 0;">
+                <ul style="margin-left: 20px; font-size: 0.95em; line-height: 1.6;">
+                    <li><strong>📞 Consultoría gratuita:</strong> Análisis de necesidades territoriales sin costo</li>
+                    <li><strong>🎯 Implementación rápida:</strong> 4 semanas desde contrato hasta operación</li>
+                    <li><strong>💯 Garantía de satisfacción:</strong> Productos probados y funcionales</li>
+                    <li><strong>🎥 Video demostración:</strong> Vea el sistema real en funcionamiento</li>
+                    <li><strong>🗺️ Análisis territorial incluido:</strong> AGEBs, localidades, censo económico</li>
+                    <li><strong>📈 Proyecciones CONAPO:</strong> Análisis demográfico prospectivo 2020-2040</li>
+                    <li><strong>📊 +400 indicadores oficiales:</strong> INEGI, CONEVAL, CONAPO, Hacienda</li>
+                    <li><strong>🤖 IA integrada:</strong> GobiAsistente disponible 24/7</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="company-info">
+                <div class="company-section">
+                    <h3>Gobierno Digital e Innovación</h3>
+                    <p>Startup mexicana especializada en transformación digital gubernamental, análisis territorial y proyecciones demográficas</p>
+                    <p><strong>Web:</strong> gobiernodigitaleinnovacion.com</p>
+                    <p><strong>Documentación:</strong> github.com/gdidemodemodemodigitalinnovacionportalinteligente</p>
+                </div>
+                <div class="company-section">
+                    <h3>Contacto Directo</h3>
+                    <p>📧 <strong>Email principal:</strong></p>
+                    <p>juanheriberto.rosas@gobiernodigitaleinnovacion.com</p>
+                    <p>📧 <strong>Email alternativo:</strong></p>
+                    <p>juanheriberto.rosas@jhrjdata.com</p>
+                    <p>📞 <strong>Consultoría gratuita disponible</strong></p>
+                    <p>🚀 <strong>Implementación en 4 semanas</strong></p>
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid #333; padding-top: 15px; margin-top: 15px; text-align: center;">
+                <p>&copy; 2025 Gobierno Digital e Innovación - Revolucionando el sector público con análisis territorial avanzado y proyecciones demográficas oficiales</p>
+                <p style="margin-top: 8px; font-style: italic; font-size: 0.9em;">"Productos funcionales con análisis territorial y proyecciones CONAPO listos para implementar - No solo teoría, sino soluciones territoriales y demográficas reales"</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

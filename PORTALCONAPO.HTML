@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Inteligente - Transformación Digital Gubernamental</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin: 20px 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .section {
+            padding: 60px 40px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section h2 {
+            color: #2a5298;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #2a5298;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .feature-card h3 {
+            color: #2a5298;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-card h3::before {
+            content: '🔸';
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .new-section .feature-card h3::before {
+            content: '';
+            margin-right: 0;
+        }
+        
+        .benefits-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .benefit-item {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .benefit-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .modules-section {
+            background: white;
+        }
+        
+        .module-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .module-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        
+        .stats-section {
+            background: #2a5298;
+            color: white;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .stat-item {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 40px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 20px 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            background: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .cta-button.pdf-button {
+            background: #28a745;
+        }
+        
+        .cta-button.pdf-button:hover {
+            background: #218838;
+        }
+        
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .company-info {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .company-info div {
+            margin: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .section {
+                padding: 40px 20px;
+            }
+            
+            .features-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            iframe {
+                height: 250px !important;
+            }
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #ff6b6b;
+        }
+        
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .tech-badge {
+            background: #2a5298;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .new-section {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+        }
+
+        .conapo-section {
+            background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);
+            color: white;
+        }
+
+        .new-badge {
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Portal Inteligente</h1>
+            <p class="subtitle">Solución Digital Integral para la Transformación Gubernamental</p>
+            <div class="badge">✨ Tecnología de Vanguardia</div>
+            <div class="badge">🚀 Implementación Inmediata</div>
+            <div class="badge">📊 400+ Indicadores Oficiales</div>
+            <div class="badge">🆕 Análisis Territorial Avanzado</div>
+            <div class="badge">📈 Proyecciones CONAPO 2020-2040</div>
+        </header>
+
+        <!-- Introducción -->
+        <section class="section">
+            <h2>Revolucione su Administración Pública</h2>
+            <div class="highlight">
+                <p style="font-size: 1.2em; text-align: center; margin-bottom: 20px;">
+                    <strong>"La Información es Poder"</strong> - Transforme su municipio o estado con el Portal Inteligente, 
+                    una plataforma digital integral que combina análisis de datos avanzados, inteligencia artificial y 
+                    herramientas de gestión territorial para optimizar la toma de decisiones gubernamentales.
+                </p>
+            </div>
+            
+            <div class="tech-stack">
+                <span class="tech-badge">Inteligencia Artificial</span>
+                <span class="tech-badge">Análisis de Big Data</span>
+                <span class="tech-badge">Dashboards Interactivos</span>
+                <span class="tech-badge">Chat IA con Internet</span>
+                <span class="tech-badge">Reportes PDF Automáticos</span>
+                <span class="tech-badge">+400 Indicadores INEGI/CONEVAL</span>
+                <span class="tech-badge">Análisis por AGEBs</span>
+                <span class="tech-badge">Censo Económico 2019</span>
+                <span class="tech-badge">DENUE 2025</span>
+                <span class="tech-badge">Proyecciones CONAPO 2020-2040</span>
+            </div>
+        </section>
+
+
+
+        <!-- NUEVA SECCIÓN: Análisis Territorial Avanzado -->
+        <section class="section new-section">
+            <h2 style="color: white;">Nuevas Capacidades de Análisis Territorial <span class="new-badge">NUEVO</span></h2>
+            <div class="features-grid">
+                <div class="feature-card" style="border-left: 5px solid #28a745; background: white; color: #333;">
+                    <h3 style="color: #2a5298; display: flex; align-items: center;">
+                        🏙️ Análisis Urbano Integral por AGEBs
+                    </h3>
+                    <p style="color: #333; line-height: 1.6;">Sistema que genera análisis demográficos completos a nivel de Áreas Geoestadísticas Básicas (AGEBs) urbanas, 
+                    basado en el Censo de Población y Vivienda 2020 del INEGI. Perfecto para planificación urbana detallada, 
+                    análisis de conectividad, modernización digital y posicionamiento intraurbano.</p>
+                </div>
+                
+                <div class="feature-card" style="border-left: 5px solid #28a745; background: white; color: #333;">
+                    <h3 style="color: #2a5298; display: flex; align-items: center;">
+                        🌍 Análisis Sociodemográfico por Localidades
+                    </h3>
+                    <p style="color: #333; line-height: 1.6;">Análisis completo de las localidades más relevantes del municipio integrando aspectos sociodemográficos: 
+                    perfil demográfico, estructura por edad, niveles educativos, actividad económica, mercado laboral, 
+                    calidad habitacional, servicios urbanos y diversidad cultural.</p>
+                </div>
+                
+                <div class="feature-card" style="border-left: 5px solid #28a745; background: white; color: #333;">
+                    <h3 style="color: #2a5298; display: flex; align-items: center;">
+                        🏢 Directorio Empresarial DENUE 2025
+                    </h3>
+                    <p style="color: #333; line-height: 1.6;">Acceso completo al Directorio Estadístico Nacional de Unidades Económicas actualizado, 
+                    con análisis sectorial, por actividad económica, tamaño de empresa, búsqueda empresarial 
+                    y resúmenes ejecutivos por estado y municipio.</p>
+                </div>
+                
+                <div class="feature-card" style="border-left: 5px solid #28a745; background: white; color: #333;">
+                    <h3 style="color: #2a5298; display: flex; align-items: center;">
+                        📊 Censo Económico Integral
+                    </h3>
+                    <p style="color: #333; line-height: 1.6;">Análisis económico integral basado en datos oficiales del Censo Económico 2019 del INEGI. 
+                    Incluye estructura empresarial, productividad sectorial, mercado laboral, competitividad municipal 
+                    y patrones de empleo para la toma de decisiones estratégicas de desarrollo económico.</p>
+                </div>
+                
+                <div class="feature-card" style="border-left: 5px solid #28a745; background: white; color: #333;">
+                    <h3 style="color: #2a5298; display: flex; align-items: center;">
+                        📈 Proyecciones Demográficas CONAPO 2020-2040
+                    </h3>
+                    <p style="color: #333; line-height: 1.6;">Reporte ejecutivo que proporciona un diagnóstico integral de la situación demográfica municipal basado en datos oficiales del CONAPO (2020-2040). Incluye 12 secciones técnicas: caracterización poblacional, proyecciones demográficas, análisis de envejecimiento, indicadores de dependencia, evaluación de riesgos, oportunidades estratégicas e impacto en servicios públicos. Dirigido a funcionarios públicos, planificadores urbanos y tomadores de decisiones, ofrece recomendaciones accionables para políticas públicas municipales. Herramienta fundamental para la planificación estratégica y toma de decisiones basada en evidencia demográfica oficial.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Características Principales -->
+        <section class="section">
+            <h2>Características del Portal Inteligente</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>🎯 Gestión Integral de Datos</h3>
+                    <p>Centraliza y analiza más de 400 indicadores socioeconómicos oficiales de INEGI, CONEVAL, CONAPO y Hacienda, 
+                    incluyendo análisis por AGEBs, localidades, censo económico, directorio empresarial y proyecciones demográficas 
+                    2020-2040 para una visión territorial completa y prospectiva.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🤖 GobiAsistente IA</h3>
+                    <p>Asistente virtual inteligente con capacidad de búsqueda en internet, consulta de documentos 
+                    internos y generación de análisis personalizados las 24 horas del día, los 365 días del año.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>📊 Dashboards Dinámicos</h3>
+                    <p>Visualizaciones interactivas y personalizables que permiten monitorear indicadores clave 
+                    de pobreza, rezago social, finanzas públicas, FAIS, demografía, proyecciones CONAPO y análisis territorial en tiempo real.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>📄 Reportes PDF Automatizados</h3>
+                    <p>Generación automática de reportes ejecutivos demográficos, análisis técnicos territoriales y proyecciones CONAPO en formato PDF, 
+                    listos para presentaciones y toma de decisiones estratégicas de desarrollo a largo plazo.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🔗 Eliminación de Silos</h3>
+                    <p>Integra información dispersa en diferentes dependencias, creando una fuente única 
+                    de verdad que facilita la coordinación interinstitucional y el análisis territorial integral con proyecciones demográficas.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🔍 Búsqueda Inteligente</h3>
+                    <p>Sistema de búsqueda avanzado que permite encontrar información específica 
+                    en documentos, bases de datos territoriales, proyecciones demográficas y fuentes externas de manera instantánea.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Módulos Especializados ACTUALIZADO -->
+        <section class="section modules-section">
+            <h2>Módulos Especializados</h2>
+            
+            <div class="module-card">
+                <h3>📈 Módulo de Pobreza y Rezago Social</h3>
+                <p>Analiza indicadores de pobreza multidimensional, carencias sociales y rezago educativo. 
+                Identifica zonas prioritarias para programas sociales y evalúa el impacto de las intervenciones gubernamentales 
+                utilizando metodologías oficiales de CONEVAL.</p>
+            </div>
+            
+            <div class="module-card">
+                <h3>💰 Módulo de Finanzas Públicas</h3>
+                <p>Monitoreo en tiempo real de ingresos, egresos, deuda pública y indicadores financieros. 
+                Genera proyecciones presupuestales, análisis de sostenibilidad fiscal y alertas tempranas 
+                para optimizar la gestión de recursos públicos.</p>
+            </div>
+            
+            <div class="module-card">
+                <h3>🏗️ Módulo FAIS (Fondo de Infraestructura Social)</h3>
+                <p>Gestión integral del Fondo de Aportaciones para la Infraestructura Social con seguimiento 
+                de proyectos, análisis de impacto social y cumplimiento normativo. Optimiza la asignación 
+                de recursos para maximizar el beneficio social.</p>
+            </div>
+            
+            <div class="module-card" style="border: 3px solid #28a745;">
+                <h3>👥 Módulo Demográfico Avanzado <span class="new-badge">AMPLIADO</span></h3>
+                <p>Análisis poblacional completo con proyecciones demográficas, pirámides poblacionales, 
+                migración interna y crecimiento urbano. <strong>Ahora incluye análisis por AGEBs urbanas, 
+                análisis sociodemográfico por localidades</strong> y correlaciones urbanas para planificación territorial detallada.</p>
+            </div>
+
+            <div class="module-card" style="border: 3px solid #28a745;">
+                <h3>🏢 Módulo Económico Empresarial <span class="new-badge">NUEVO</span></h3>
+                <p>Análisis integral del ecosistema empresarial municipal basado en el Censo Económico 2019 y DENUE 2025. 
+                Incluye análisis sectorial, directorio empresarial, estructura productiva, mercado laboral empresarial 
+                y oportunidades de desarrollo económico territorial.</p>
+            </div>
+
+            <div class="module-card" style="border: 3px solid #28a745;">
+                <h3>🔮 Módulo Proyecciones Demográficas CONAPO <span class="new-badge">NUEVO</span></h3>
+                <p>Sistema integral de análisis demográfico prospectivo basado en las proyecciones oficiales CONAPO 2020-2040. 
+                Genera reportes ejecutivos con 12 secciones técnicas que incluyen caracterización poblacional, análisis de envejecimiento, 
+                indicadores de dependencia, evaluación de riesgos demográficos, oportunidades estratégicas e impacto en servicios públicos. 
+                Herramienta fundamental para planificación estratégica municipal a largo plazo.</p>
+            </div>
+        </section>
+
+        <!-- Beneficios -->
+        <section class="section benefits-section">
+            <h2>Beneficios para Servidores Públicos y Ciudadanía</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <span class="benefit-icon">⚡</span>
+                    <h3>Decisiones Basadas en Datos</h3>
+                    <p>Elimina la toma de decisiones intuitiva, proporcionando evidencia territorial sólida y proyecciones demográficas oficiales para cada política pública y proyecto de desarrollo.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">🎯</span>
+                    <h3>Eficiencia Operativa</h3>
+                    <p>Reduce el tiempo de búsqueda de información territorial de horas a segundos, liberando recursos para tareas estratégicas de planificación y análisis prospectivo.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">🔄</span>
+                    <h3>Coordinación Interinstitucional</h3>
+                    <p>Facilita la colaboración entre dependencias al compartir una fuente única de información territorial actualizada, análisis integrados y proyecciones demográficas oficiales.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">📱</span>
+                    <h3>Acceso 24/7</h3>
+                    <p>Disponibilidad total desde cualquier dispositivo, permitiendo consultas urgentes de información territorial y proyecciones demográficas fuera del horario laboral.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">🏆</span>
+                    <h3>Transparencia y Rendición</h3>
+                    <p>Facilita la generación de informes territoriales y reportes demográficos para organismos fiscalizadores y ciudadanía, fortaleciendo la transparencia gubernamental.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">💡</span>
+                    <h3>Innovación Gubernamental</h3>
+                    <p>Posiciona a la administración como líder en gobierno digital, análisis territorial, proyecciones demográficas e innovación tecnológica aplicada.</p>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <h3 style="color: #2a5298; margin-bottom: 20px;">🌟 Impacto Directo en la Ciudadanía</h3>
+                <p><strong>Mejores Servicios:</strong> Los ciudadanos reciben servicios más eficientes y territorialmente focalizados basados en análisis granular de necesidades por AGEBs, localidades y proyecciones demográficas.</p>
+                <p><strong>Mayor Transparencia:</strong> Acceso ciudadano a información territorial pública detallada y proyecciones demográficas de manera sencilla y comprensible.</p>
+                <p><strong>Participación Informada:</strong> La ciudadanía puede participar en procesos de consulta territorial con información técnica accesible sobre su localidad específica y tendencias demográficas.</p>
+                <p><strong>Desarrollo Focalizado:</strong> Proyectos y programas mejor dirigidos a las necesidades reales de cada zona del territorio municipal, considerando proyecciones demográficas a largo plazo.</p>
+            </div>
+        </section>
+
+        <!-- Estadísticas ACTUALIZADO -->
+        <section class="section stats-section">
+            <h2>Capacidades del Sistema</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">400+</span>
+                    <p>Indicadores Territoriales por Portal</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <p>Disponibilidad del Sistema</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3</span>
+                    <p>Portales Activos y Operativos</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">6</span>
+                    <p>Módulos Especializados</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <p>Datos Oficiales INEGI/CONEVAL/CONAPO</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">2040</span>
+                    <p>Proyecciones Demográficas Hasta</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementación -->
+        <section class="section">
+            <h2>Implementación Inmediata</h2>
+            <div class="highlight">
+                <h3 style="color: #2a5298;">🚀 Listos para Implementar</h3>
+                <p>A diferencia de otros proveedores que ofrecen solo conceptos, GDI cuenta con productos 
+                <strong>desarrollados, probados y funcionales</strong> listos para implementación inmediata, 
+                incluyendo las nuevas capacidades de análisis territorial y proyecciones demográficas CONAPO.</p>
+                
+                <h4 style="margin-top: 20px;">Proceso de Implementación:</h4>
+                <ol style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Configuración Personalizada (1-2 semanas):</strong> Adaptación del portal a la imagen institucional, configuración de análisis territoriales específicos y integración de proyecciones CONAPO municipales.</li>
+                    <li><strong>Migración de Datos (1 semana):</strong> Integración de bases de datos existentes, configuración de fuentes oficiales, carga de datos territoriales y proyecciones demográficas.</li>
+                    <li><strong>Capacitación (1 semana):</strong> Entrenamiento del personal en el uso del sistema, nuevas herramientas de análisis territorial y reportes demográficos CONAPO.</li>
+                    <li><strong>Puesta en Producción (1 día):</strong> Activación completa del sistema con todas las capacidades territoriales y demográficas.</li>
+                </ol>
+                
+                <p style="margin-top: 20px;"><strong>Tiempo Total: 3-4 semanas desde la contratación hasta la operación completa 
+                con análisis territorial avanzado y proyecciones demográficas oficiales.</strong></p>
+            </div>
+        </section>
+
+        <!-- Video Demostración -->
+        <section class="section" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
+            <h2>Demostración en Video del Portal Inteligente</h2>
+            <div class="highlight">
+                <h3 style="color: #2a5298; margin-bottom: 20px;">🎥 Vea el Portal en Acción</h3>
+                <p style="text-align: center; margin-bottom: 30px; font-size: 1.1em;">
+                    Explore las capacidades reales del Portal Inteligente a través de esta demostración completa 
+                    que muestra dashboards, análisis territorial, datos demográficos, proyecciones CONAPO y funcionalidades de GobiAsistente.
+                </p>
+                
+                <div style="text-align: center; margin: 30px 0;">
+                    <iframe 
+                        width="100%" 
+                        height="400" 
+                        style="max-width: 800px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);"
+                        src="https://www.youtube.com/embed/gzYcbgQ_Ny0" 
+                        title="Portal Inteligente - Demostración" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="https://www.youtube.com/watch?v=gzYcbgQ_Ny0" 
+                       target="_blank" 
+                       style="color: #2a5298; font-weight: bold; font-size: 1.1em; text-decoration: none;">
+                        🔗 Ver en YouTube | 📺 Pantalla Completa
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Casos de Éxito ACTUALIZADO -->
+        <section class="section">
+            <h2>Portales Implementados - Casos de Éxito Reales</h2>
+            <div class="features-grid">
+                <div class="feature-card" style="border-left: 5px solid #28a745;">
+                    <h3>🌐 Portal Ecatepec Inteligente <span class="new-badge">ACTUALIZADO</span></h3>
+                    <p>Implementación completa para uno de los municipios más grandes de México, 
+                    integrando datos demográficos, sociales y económicos. <strong>Ahora incluye análisis por AGEBs, 
+                    análisis sociodemográfico por localidades, censo económico, directorio empresarial DENUE 
+                    y proyecciones demográficas CONAPO 2020-2040</strong>. Más de 400 indicadores especializados en análisis territorial integral.</p>
+                    <a href="https://sites.google.com/view/portal-ecatepec-inteligente/p%C3%A1gina-principa" 
+                       target="_blank" style="color: #2a5298; font-weight: bold;">🔗 Ver Portal en Vivo</a>
+                </div>
+                
+                <div class="feature-card" style="border-left: 5px solid #28a745;">
+                    <h3>🌐 Portal Cuautitlán Izcalli Inteligente <span class="new-badge">ACTUALIZADO</span></h3>
+                    <p><strong>Portal activo y funcional</strong> que proporciona acceso a información territorial completa 
+                    mediante dashboards interactivos y estudios detallados. <strong>Incluye nuevos análisis por AGEBs urbanas, 
+                    localidades, censo económico, directorio empresarial y proyecciones CONAPO</strong>. Más de 400 indicadores para análisis territorial integral y prospectivo.</p>
+                    <a href="https://sites.google.com/view/portal-cizcalli-inteligente/p%C3%A1gina-principa" 
+                       target="_blank" style="color: #2a5298; font-weight: bold;">🔗 Ver Portal en Vivo</a>
+                </div>
+                
+                <div class="feature-card" style="border-left: 5px solid #28a745;">
+                    <h3>🌐 Portal Nezahualcóyotl Inteligente <span class="new-badge">ACTUALIZADO</span></h3>
+                    <p><strong>Portal operativo</strong> con análisis territorial avanzado que incluye <strong>análisis por AGEBs, 
+                    sociodemográfico por localidades, censo económico, directorio empresarial DENUE 
+                    y proyecciones demográficas CONAPO 2020-2040</strong>. Enfocado en desarrollo territorial informado y sostenible con más de 400 indicadores especializados.</p>
+                    <a href="https://sites.google.com/view/nezahualcoyolt-inteligente/p%C3%A1gina-principa" 
+                       target="_blank" style="color: #2a5298; font-weight: bold;">🔗 Ver Portal en Vivo</a>
+                </div>
+            </div>
+            
+            <div class="highlight">
+                <h3 style="color: #2a5298; margin-bottom: 20px;">✅ Portales con Análisis Territorial Completo y Proyecciones CONAPO</h3>
+                <p><strong>Estos no son mockups ni demostraciones:</strong> Son portales <strong>reales, operativos y activos</strong> 
+                que ahora incluyen las nuevas capacidades de análisis territorial granular y proyecciones demográficas oficiales.</p>
+                
+                <ul style="margin-top: 15px; margin-left: 20px;">
+                    <li><strong>Análisis por AGEBs:</strong> Análisis urbano integral a nivel de Áreas Geoestadísticas Básicas</li>
+                    <li><strong>Análisis por Localidades:</strong> Estudios sociodemográficos completos por localidad</li>
+                    <li><strong>Censo Económico:</strong> Estructura empresarial y productividad sectorial</li>
+                    <li><strong>Directorio DENUE:</strong> Base empresarial completa y actualizada</li>
+                    <li><strong>Proyecciones CONAPO:</strong> Análisis demográfico prospectivo 2020-2040</li>
+                    <li><strong>Dashboards Territoriales:</strong> Visualizaciones dinámicas de datos espaciales</li>
+                    <li><strong>+400 Indicadores:</strong> Datos oficiales territoriales de INEGI, CONEVAL y CONAPO</li>
+                </ul>
+                
+                <p style="margin-top: 15px; font-size: 1.1em;"><strong>🎯 Explore los portales reales para comprobar 
+                las nuevas capacidades de análisis territorial, proyecciones demográficas CONAPO y la profundidad de nuestras soluciones.</strong></p>
+            </div>
+        </section>
+
+        <!-- Call to Action ACTUALIZADO -->
+        <section class="cta-section">
+            <h2>Transforme su Administración con Análisis Territorial y Proyecciones CONAPO</h2>
+            <p style="font-size: 1.3em; margin-bottom: 30px;">
+                Únase a la revolución del gobierno inteligente territorial. Contrate el Portal Inteligente 
+                y posicione su administración a la vanguardia del análisis territorial, proyecciones demográficas 
+                oficiales y la planificación estratégica prospectiva.<br>
+                <strong>🔗 Explore nuestros 3 portales reales con análisis territorial completo y proyecciones CONAPO.</strong>
+            </p>
+            
+            <a href="https://gobiernodigitaleinnovacion.com/" class="cta-button">Solicitar Demostración</a>
+            <a href="mailto:juanheriberto.rosas@gobiernodigitaleinnovacion.com" class="cta-button">Contactar Ahora</a>
+            <a href="https://drive.google.com/file/d/1-dEKKITGv1r4sI-T68z0je4iljjbIvLy/view?pli=1" 
+               target="_blank" 
+               class="cta-button pdf-button">📄 Descargar Brochure PDF</a>
+            
+            <div style="margin-top: 40px; font-size: 1.1em;">
+                <p>📞 Consultoría gratuita | 🎯 Implementación en 4 semanas | 💯 Garantía de satisfacción | 
+                🎥 Video demostración disponible | 🗺️ Análisis territorial incluido | 📈 Proyecciones CONAPO 2020-2040</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="company-info">
+                <div>
+                    <h3>Gobierno Digital e Innovación</h3>
+                    <p>Startup mexicana especializada en transformación digital gubernamental, análisis territorial y proyecciones demográficas</p>
+                </div>
+                <div>
+                    <p><strong>Web:</strong> gobiernodigitaleinnovacion.com</p>
+                    <p><strong>Email:</strong> juanheriberto.rosas@gobiernodigitaleinnovacion.com</p>
+                    <p><strong>Email alternativo:</strong> juanheriberto.rosas@jhrjdata.com</p>
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid #333; padding-top: 20px; margin-top: 20px;">
+                <p>&copy; 2025 Gobierno Digital e Innovación. Revolucionando el sector público con análisis territorial avanzado y proyecciones demográficas oficiales.</p>
+                <p style="margin-top: 10px; font-style: italic;">"Productos funcionales con análisis territorial y proyecciones CONAPO listos para implementar - No solo teoría, sino soluciones territoriales y demográficas reales"</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
